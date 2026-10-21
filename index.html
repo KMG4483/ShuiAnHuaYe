@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>水岸花野 · 运营助手</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="assets/logo.png">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><img src="assets/logo.png" alt=""><div><b>水岸花野</b><span>AI 运营助手 · 网页版</span></div></div>
+  <div class="top-actions">
+    <span id="conn" class="dot off">未连接</span>
+    <button id="refresh" class="btn ghost">刷新</button>
+    <button id="settings" class="btn ghost">连接设置</button>
+  </div>
+</header>
+
+<nav class="sidebar" id="sidebar">
+  <button class="nav active" data-page="home">📊 总览</button>
+  <button class="nav" data-page="weather">⛅ 天气</button>
+  <button class="nav" data-page="photo">📷 摄影</button>
+  <button class="nav" data-page="bloom">🌱 花期</button>
+  <button class="nav" data-page="ai">💬 AI 参谋</button>
+</nav>
+
+<main id="app">
+  <section class="page active" id="page-home">
+    <h1>今日总览</h1>
+    <p class="sub" id="home-sub">正在连接数据…</p>
+    <div class="grid kpis" id="kpis"></div>
+    <div class="grid two">
+      <article class="card"><h3>今日要点</h3><div id="glance" class="list"></div></article>
+      <article class="card"><h3>7 日趋势</h3><div id="trend" class="trend"></div></article>
+    </div>
+    <article class="card"><h3>要不要现在发群？</h3><div id="push-preview" class="preview">连接后生成</div>
+      <button class="btn primary" id="copy-push">复制游玩建议</button></article>
+  </section>
+
+  <section class="page" id="page-weather">
+    <h1>天气</h1><p class="sub" id="weather-sub">—</p>
+    <div class="card" id="weather-now"></div>
+    <div class="card"><h3>未来 7 天</h3><div id="weather-days" class="days"></div></div>
+  </section>
+
+  <section class="page" id="page-photo">
+    <h1>摄影助手</h1><p class="sub">太阳方位 · 全天时段 · 火烧云</p>
+    <div class="grid kpis" id="photo-kpis"></div>
+    <div class="card"><h3>全天拍摄时段</h3><div id="day-slots" class="slots"></div></div>
+    <div class="card"><h3>AI 拍摄方案</h3><button class="btn primary" id="photo-ai">生成方案</button><pre id="photo-out"></pre></div>
+  </section>
+
+  <section class="page" id="page-bloom">
+    <h1>花期</h1><p class="sub" id="bloom-sub">—</p>
+    <div id="bloom-list" class="grid two"></div>
+  </section>
+
+  <section class="page" id="page-ai">
+    <h1>AI 参谋</h1><p class="sub">回答会引用当前天气与经营数据</p>
+    <div class="card chat" id="chat"></div>
+    <div class="askbar"><input id="ask-input" placeholder="问点什么，例如：今天怎么冲客流？"><button class="btn primary" id="ask">发送</button></div>
+  </section>
+</main>
+
+<nav class="tabbar" id="tabbar">
+  <button class="tab active" data-page="home">📊<span>总览</span></button>
+  <button class="tab" data-page="weather">⛅<span>天气</span></button>
+  <button class="tab" data-page="photo">📷<span>摄影</span></button>
+  <button class="tab" data-page="bloom">🌱<span>花期</span></button>
+  <button class="tab" data-page="ai">💬<span>AI</span></button>
+</nav>
+
+<dialog id="dlg">
+  <form method="dialog">
+    <h3>连接设置</h3>
+    <p class="sub">填手机版/服务器地址；本地留空表示同源。</p>
+    <input id="api-base" placeholder="https://your-tunnel.example.com">
+    <div class="row"><button class="btn ghost" value="cancel">取消</button><button class="btn primary" value="save">保存</button></div>
+  </form>
+</dialog>
+<script src="app.js"></script>
+</body>
+</html>
